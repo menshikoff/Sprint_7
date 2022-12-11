@@ -13,12 +13,10 @@ public class CourierCreateTest {
     Courier courier;
 
     @Before
-    public void setUp() { RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru"; }
-    @Before
-    public void createCourierData() {
+    public void setUp() {
+        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
         courier = new Courier("danmen", "12345", "Daniel");
     }
-
     @Test
     @DisplayName("Check possibility to create courier")
     public void createCourierApi() {
@@ -28,7 +26,7 @@ public class CourierCreateTest {
                 .body(courier)
                 .post("/api/v1/courier");
 
-        Assert.assertEquals(response.statusCode(), 201);
+        Assert.assertEquals(201, response.statusCode());
         Assert.assertEquals(response.asString().substring(1, 10), "\"ok\":true");
     }
 
@@ -62,7 +60,7 @@ public class CourierCreateTest {
                         .body(courier)
                         .post("/api/v1/courier");
 
-        Assert.assertEquals(response.statusCode(), 400);
+        Assert.assertEquals(400, response.statusCode());
     }
 
     @Test
@@ -76,7 +74,7 @@ public class CourierCreateTest {
                         .body(courier)
                         .post("/api/v1/courier");
 
-        Assert.assertEquals(response.statusCode(), 400);
+        Assert.assertEquals(400, response.statusCode());
     }
 
     @Test
@@ -90,7 +88,7 @@ public class CourierCreateTest {
                         .body(courier)
                         .post("/api/v1/courier");
 
-        Assert.assertEquals(response.statusCode(), 201);
+        Assert.assertEquals(201, response.statusCode());
     }
 
     @After
