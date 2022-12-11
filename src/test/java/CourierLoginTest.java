@@ -13,9 +13,9 @@ public class CourierLoginTest {
     Integer id;
 
     @Before
-    public void setUp() { RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru"; }
-    @Before
-    public void createCourier() {
+    public void setUp() {
+        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+
         courier = new Courier("danmen", "12345", "Daniel");
         given()
                 .header("Content-type", "application/json")
